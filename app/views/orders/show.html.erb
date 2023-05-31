@@ -6,6 +6,27 @@
 
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
+    <p> Email: <%= @order.email %> </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Quanitity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order.line_item.each do |item| %>
+          <%= render "line_item", product: item.product, quantity: item[:quantity].to_i %>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>Total: </th>
+          <th><%= humanized_money_with_symbol @order.total %></th>
+        </tr>
+      </tfoot>
+    </table>
   </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
