@@ -1,0 +1,19 @@
+<section>
+  <h1></h1>
+  <%= link_to "All Categories", [:admin, :categories]%>
+  <div>
+  <%= form_for [:admin, @category] do |form| %>
+    <%= if form.object.errors.any? %>
+      <p>Category could not be saved because of the following error(s): </p>
+      <ul>
+        <%= form.object.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    <%= form.submit "Create Category" %>
+    <% end %>
+  </div>
+</section>
