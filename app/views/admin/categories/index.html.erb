@@ -1,0 +1,13 @@
+<div>
+  <div class="add-category">
+    <%= link_to "New Category", [:new, :admin, :category]%>
+  </div>
+  <table>
+    <tr></tr>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= link_to category.name, category %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
