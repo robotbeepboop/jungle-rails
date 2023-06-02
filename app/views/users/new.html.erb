@@ -1,0 +1,9 @@
+<h1>Register</h1>
+
+<%= form_for :user, url: "/users" do |registration_form| %>
+  First Name: <%= registration_form.text_field :first_name, placeholder: 'First name' %>
+  Last Name: <%= registration_form.text_field :last_name, placeholder: 'Last name' %>
+  Email: <%= registration_form.text_field :email, placeholder: 'Email' %>
+  Password: <%= registration_form.text_field :password, placeholder: 'Password' %>
+  <%= registration_form.submit "Submit"%>
+<% end %>

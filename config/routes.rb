@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
   root to: 'products#index'
-  get 'about', to: 'about#index'
+  get "/about", to: "about#show"
+  get "/register" => "users#new"
+  get "/login" => "sessions#new"
+  get "/logout" => "sessions#destroy"
+  post "/register" => "users#create"
+  post "/login" => "sessions#create"
 
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
@@ -16,7 +21,8 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'dashboard#show'
     resources :products, except: [:edit, :update, :show]
-    resources :categories, only: [:index, :new, :create]
+    #make categories actions match products actions
+    resources :categories, except: [:edit, :update, :show]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
