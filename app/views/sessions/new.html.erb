@@ -1,0 +1,9 @@
+<h1>login</h1>
+
+<%= form_tag "/login" do %>
+  <div>
+    <p>Email: <%= text_field_tag :email, "", placeholder: "Email"%></p>
+    <p>Password: <%= password_field_tag :password, "", placeholder: "Password"%></p>
+    <%= submit_tag "Submit"%>
+  </div>
+<% end %>
